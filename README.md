@@ -2,6 +2,26 @@
 # WordCount-Using-MapReduce-Hadoop
 
 This repository is designed to test MapReduce jobs using a simple word count dataset.
+The program consists of:
+
+Mapper: Reads the input text and outputs (word, 1) pairs.
+Reducer: Aggregates the counts of each word and outputs the total occurrences.
+
+### Approach and Implementation
+
+Mapper (WordMapper.java)
+
+The mapper takes an input line from the dataset and splits it into words.
+Each word is emitted as a key-value pair (word, 1).
+The words are cleaned to ensure case consistency and remove unnecessary spaces.
+
+Reducer (WordReducer.java)
+The reducer takes the output from the mapper and sums the occurrences of each word.
+The final output consists of each word and its total count.
+
+Driver (Controller.java)
+The driver class sets up and configures the MapReduce job.
+It specifies the input and output paths, and links the Mapper and Reducer.
 
 ## Objectives
 
@@ -116,3 +136,25 @@ To copy the output from HDFS to your local machine:
     docker cp resourcemanager:/opt/hadoop-3.2.1/share/hadoop/mapreduce/output/ shared-folder/output/
     ```
 3. Commit and push to your repo so that we can able to see your output
+
+### Challenges Faced & Solutions
+Understanding how the docker and hadoop architecture works is very important. 
+
+### Sample Input and Expected Output
+input- 
+
+Hello world
+Hello Hadoop
+Hadoop is powerful
+Hadoop is used for big data
+
+output- 
+Hadoop 3
+Hello 2
+is 2
+used 1
+for 1
+big 1
+data 1
+powerful 1
+world 1
